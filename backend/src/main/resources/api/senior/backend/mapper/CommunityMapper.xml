@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="api.senior.backend.mapper.CommunityMapper">
+
+    <sql id="communityList">
+        SELECT C.COMMUNITY_SN
+             , C.SJ
+             , C.CN
+             , C.IMPRTNC_AT
+             , C.REGIST_MBER_INNB
+             , C.REGIST_DT
+             , C.UPDT_DT
+             , C.DEL_AT
+          FROM COMMUNITY C
+         WHERE 1 = 1
+           <if test="communitySn != null and communitySn != ''">
+           AND C.COMMUNITY_SN = #{communitySn}
+           </if>
+           <if test="imprtncAt != null and imprtncAt != ''">
+           AND C.IMPRTNC_AT = #{imprtncAt}
+           </if>
+           <if test="delAt != null and delAt != ''">
+           AND C.DEL_AT = #{delAt}
+           </if>
+           <if test="searchSe != null and searchSe != ''">
+               <if test="searchTxt != null and searchTxt != ''">
+                   <if test="searchSe == '001'">
+           AND INSTR(C.SJ, #{searchTxt}) > 0
+                   </if>
+                   <if test="searchSe == '002'">
+           AND INSTR(C.CN, #{searchTxt}) > 0
+                   </if>
+                   <if test="searchSe == '003'">
+           AND (INSTR(C.SJ, #{searchTxt}) > 0 OR INSTR(C.CN, #{searchTxt}) > 0)
+                   </if>
+               </if>
+           </if>
+        ORDER BY IMPRTNC_AT DESC, COMMUNITY_SN DESC
+    </sql>
+
+    <select id="selectCommunityList" resultType="OnListMap" parameterType="map">
+        SELECT /*CommunityMapper.xml [api.senior.backend.mapper.CommunityMapper
+               .selectCommunityList] 커뮤니티 목록*/
+               C.COMMUNITY_SN
+             , C.SJ
+             , C.CN
+             , C.IMPRTNC_AT
+             , C.REGIST_MBER_INNB
+             , (SELECT M.MBER_NM
+                  FROM MBER M
+                 WHERE M.MBER_INNB = C.REGIST_MBER_INNB
+               ) AS REGIST_MBER_NM
+             , DATE_FORMAT(C.REGIST_DT, '%Y-%m-%d %T') AS REGIST_DT
+             , C.DEL_AT
+             , DATE_FORMAT(C.UPDT_DT, '%Y-%m-%d %T') AS UPDT_DT
+          FROM (<include refid="communityList"/>) C
+         LIMIT #{startCnt}, #{pageListCnt}
+    </select>
+
+    <select id="selectCommunityListCnt" parameterType="map" resultType="java.lang.String">
+        SELECT /*CommunityMapper.xml [api.senior.backend.mapper.CommunityMapper
+               .selectCommunityListCnt] 커뮤니티 목록 갯수*/
+               COUNT(*) AS CNT
+          FROM (<include refid="communityList"/>) C
+    </select>
+
+    <select id="selectCommunityInfo" resultType="OnListMap" parameterType="map">
+        SELECT /*CommunityMapper.xml [api.senior.backend.mapper.CommunityMapper
+               .selectCommunityInfo] 커뮤니티 상세 정보 조회*/
+               C.COMMUNITY_SN
+             , C.SJ
+             , C.CN
+             , C.IMPRTNC_AT
+             , IF(C.IMPRTNC_AT='Y', '중요', '일반') IMPRTNC_AT_NM
+             , C.REGIST_MBER_INNB
+             , (SELECT M.MBER_NM
+                  FROM MBER M
+                 WHERE M.MBER_INNB = C.REGIST_MBER_INNB) AS REGIST_MBER_NM
+             , DATE_FORMAT(C.REGIST_DT, '%Y-%m-%d %T') AS REGIST_DT
+             , DATE_FORMAT(C.UPDT_DT, '%Y-%m-%d %T') AS UPDT_DT
+          FROM (<include refid="communityList"/>) C
+         WHERE C.DEL_AT = 'N'
+    </select>
+
+    <delete id="deleteCommunity" parameterType="map">
+        UPDATE /*CommunityMapper.xml [api.senior.backend.mapper.CommunityMapper
+               .deleteTestBoard] 테스트 게시판 상세 정보 조회*/
+               COMMUNITY
+           SET DEL_AT = 'Y'
+             , UPDT_DT = NOW()
+         WHERE COMMUNITY_SN = #{communitySn}
+    </delete>
+
+    <insert id="insertCommunity" parameterType="map">
+        INSERT /*CommunityMapper.xml [api.senior.backend.mapper.CommunityMapper
+               .InsertTestBoard] 테스트 게시판 등록*/
+          INTO COMMUNITY
+             ( SJ
+             , CN
+             , IMPRTNC_AT
+             , REGIST_MBER_INNB
+             , REGIST_DT
+             , DEL_AT
+             ) VALUES (
+               #{sj}
+             , #{cn}
+             , #{imprtncAt}
+             , #{mberInnb}
+             , NOW()
+             , 'N'
+             )
+    </insert>
+
+    <update id="updateCommunity" parameterType="map">
+        UPDATE /*CommunityMapper.xml [api.senior.backend.mapper.CommunityMapper
+               .updateTestBoard] 테스트 게시판 수정*/
+               COMMUNITY
+           SET SJ = #{sj}
+             , CN = #{cn}
+             , IMPRTNC_AT = #{imprtncAt}
+             , UPDT_DT = NOW()
+         WHERE COMMUNITY_SN = #{communitySn}
+    </update>
+
+</mapper>

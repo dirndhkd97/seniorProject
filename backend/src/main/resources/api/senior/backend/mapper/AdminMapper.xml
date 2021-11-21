@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="api.senior.backend.mapper.AdminMapper">
+
+    <sql id="mberList">
+        SELECT M.MBER_INNB
+             , M.ID
+             , M.MBER_NM
+             , M.CTTPC
+             , M.EMAIL
+             , DATE_FORMAT(M.MBER_JOIN_DT, '%Y-%m-%d %T') AS JOIN_DT
+          FROM MBER M
+         WHERE STTUS = '000'
+           <if test="mberInnb != null and mberInnb != ''">
+           AND M.MBER_INNB = #{mberInnb}
+           </if>
+           <if test="searchSe != null and searchSe != ''">
+               <if test="searchTxt != null and searchTxt != ''">
+                   <if test="searchSe == '001'">
+           AND INSTR(M.ID, #{searchTxt}) > 0
+                   </if>
+                   <if test="searchSe == '002'">
+           AND INSTR(M.MBER_NM, #{searchTxt}) > 0
+                   </if>
+               </if>
+           </if>
+         ORDER BY MBER_JOIN_DT DESC
+    </sql>
+
+    <select id="selectMberList" resultType="OnListMap" parameterType="map">
+        SELECT /*AdminMapper.xml [api.senior.backend.mapper.AdminMapper
+               .selectMberList] 멤버 목록*/
+               M.*
+          FROM (<include refid="mberList"/>) M
+         LIMIT #{startCnt}, #{pageListCnt}
+    </select>
+
+    <select id="selectMberListCnt" parameterType="map" resultType="java.lang.String">
+        SELECT /*AdminMapper.xml [api.senior.backend.mapper.AdminMapper
+               .selectMberListCnt] 멤버 목록 조회*/
+               COUNT(*) AS CNT
+          FROM (<include refid="mberList"/>) M
+    </select>
+
+    <select id="selectMberInfo" resultType="OnListMap" parameterType="map">
+        SELECT /*AdminMapper.xml [api.senior.backend.mapper.AdminMapper
+               .selectMberInfo] 멤버 정보*/
+               M.*
+          FROM (<include refid="mberList"/>) M
+    </select>
+
+    <select id="selectMberDplctCnt" parameterType="map" resultType="java.lang.String">
+        SELECT /*AdminMapper.xml [api.senior.backend.mapper.AdminMapper
+               .selectMberDplctCnt] 멤버 ID 중복 조회*/
+               COUNT(*) AS CNT
+          FROM MBER M
+         WHERE ID = #{id}
+    </select>
+
+    <delete id="deleteMber" parameterType="map">
+        UPDATE /*AdminMapper.xml [api.senior.backend.mapper.AdminMapper
+               .deleteMber] 멤버 탈퇴 */
+               MBER
+           SET PASSWORD = ''
+             , MBER_NM = ''
+             , STTUS = '999'
+             , CTTPC = ''
+             , EMAIL = ''
+             , MBER_SECSN_DT = NOW()
+         WHERE MBER_INNB = #{mberInnb}
+    </delete>
+
+    <insert id="insertMber" parameterType="map">
+        INSERT /*AdminMapper.xml [api.senior.backend.mapper.AdminMapper
+               .insertMber] 멤버 등록*/
+          INTO MBER
+             ( ID
+             , PASSWORD
+             , MBER_NM
+             , STTUS
+             , CTTPC
+             , EMAIL
+             , MBER_JOIN_DT
+             ) VALUES (
+               #{id}
+             , #{password}
+             , #{mberNm}
+             , '000'
+             , #{cttpc}
+             , #{email}
+             , NOW() )
+    </insert>
+
+    <update id="updateMber" parameterType="map">
+        UPDATE /*AdminMapper.xml [api.senior.backend.mapper.AdminMapper
+               .updateMber] 멤버 수정*/
+               MBER
+           SET ID = #{id}
+             , PASSWORD = #{password}
+             , MBER_NM = #{mberNm}
+             , CTTPC = #{cttpc}
+             , EMAIL = #{email}
+         WHERE MBER_INNB = #{mberInnb}
+    </update>
+
+</mapper>

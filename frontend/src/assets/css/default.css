@@ -1,0 +1,282 @@
+@charset "UTF-8";
+
+.v-toast { z-index: 9999999 !important; }
+.v-toast__item--success { background-color: #45a247 !important; }
+.v-toast__item--warning { background-color: #fe8c00 !important; }
+
+.board-view-con img {max-width:100%;}
+
+/*/////////////////////////////// html 엘리먼트 속성 초기화 */
+h1, h2, h3, h4, h5, h6 { font-size: 1em; margin: 0px; font-weight: normal; }
+
+p, ul, ol, li, dl, dt, dd, form, fieldset { margin: 0px; padding: 0px; font-size: 100%; }
+
+ul, ol, li { list-style: none; font-size: 100%; }
+
+table { border-collapse: collapse; font-size: 100%; }
+
+legend { visibility: hidden; overflow: hidden; width: 0; height: 0; background-color: transparent; font-size: 0; line-height: 0; }
+
+caption { visibility: hidden; overflow: hidden; width: 0; height: 0; background-color: transparent; font-size: 0; line-height: 0; text-indent: -9999em; }
+
+img { border: 0px none; font-size: 0px; line-height: 0px; }
+
+input, select, textarea { margin: 0px; padding: 0px; }
+
+input { line-height: 16px; }
+
+.msie7 label input[type=radio], .msie7 label input[type=checkbox] { width: 14px; height: 14px; }
+
+/*/////////////////////////////// 그외 초기화 ///////////////////////////////*/
+body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, header, hgroup, footer, nav, section, article, aside, figure, video, audio { margin: 0; padding: 0; border: 0; }
+
+em, address { font-style: normal; }
+
+hr { display: none; }
+
+*:first-child + html label { vertical-align: bottom; }
+
+select, textarea, input, img, button { vertical-align: middle; }
+
+table td { word-wrap: break-word; word-break: break-all; }
+
+button { cursor: pointer; }
+
+*:focus { outline: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
+
+audio, canvas, progress, video { display: inline-block; vertical-align: baseline; }
+
+/*/////////////////////////////// 레이아웃 ///////////////////////////////*/
+* { padding:0; margin:0; }
+
+html, body { width:100%; height:100%; }
+
+#wrap { position:relative; width:100%; height:100%; background: #ecf0f7; }
+
+#container { width:100%; height:935px; padding:0px 0 0 250px; box-sizing: border-box; }
+
+#content { padding:20px; position: absolute; bottom: 0; top:40px; overflow-y: scroll; overflow-x: hidden; }
+
+#lnb { position:fixed; left:0px; top:40px; width:220px; height:100%; background:#fff; border-right:1px solid #e0e0e0; box-sizing: border-box; z-index:9; }
+
+/*/////////////////////////////// 전체 폰트 ///////////////////////////////*/
+body, select, textarea, a, button, input { font-family: "Nanum Gothic", sans-serif; font-size: 100%; color: #333; line-height: 1; }
+
+@charset "UTF-8";
+
+a { color: #333; text-decoration: none; }
+
+a:hover { color: #3b86ff; text-decoration: none; }
+
+/*weigh*/
+.bold { font-weight: 600 !important; }
+
+.normal { font-weight: normal !important; }
+
+.uline { text-decoration: underline; }
+
+.no-bg { background: none !important; }
+
+/*align*/
+.__left { text-align: left !important; }
+
+.__center { text-align: center !important; }
+
+.__right { text-align: right !important; }
+
+.v-top { vertical-align: top !important; }
+
+.v-middle { vertical-align: middle !important; }
+
+.v-bottom { vertical-align: bottom !important; }
+
+/*width*/
+.wp100 { width: 100% !important; }
+
+/*display*/
+.dp-tb { display: table; width: 100%; }
+
+.dp-tb .dp-tr { display: table-row; }
+
+.dp-tb .dp-td { display: table-cell; vertical-align: top; }
+
+/* etc */
+.scroll { overflow: scroll; }
+
+.scroll-y { overflow-y: auto; overflow-x: hidden; }
+
+.scroll-x { overflow-x: scroll; overflow-y: hidden; }
+
+.f-left { float: left; }
+
+.f-right { float: right; }
+
+.blind { /* 스크린 리더기로 읽혀져야 하지만 실제로는 보이지 않는 콘텐츠. 포지셔닝 (다른 예 :  position：absolute; left:-10000px; top:auto; height:1px; overflow:hidden; ) */ display: block; width: 0; height: 0px; text-indent: -9000px; overflow: hidden; }
+
+/* margin */
+.mgt-base { margin-top: 35px !important; }
+
+.mgb-base { margin-bottom: 35px !important; }
+
+.mgt-half { margin-top: 15px !important; }
+
+.mgb-half { margin-bottom: 15px !important; }
+
+.mg0 { margin: 0 !important; }
+
+.mgl0 { margin-left: 0px !important; }
+
+.mgl5 { margin-left: 5px !important; }
+
+.mgl10 { margin-left: 10px !important; }
+
+.mgl15 { margin-left: 15px !important; }
+
+.mgl20 { margin-left: 20px !important; }
+
+.mgl25 { margin-left: 25px !important; }
+
+.mgl30 { margin-left: 30px !important; }
+
+.mgl70 { margin-left: 70px !important; }
+
+.mgl103 { margin-left: 103px !important; }
+
+.mgb0 { margin-bottom: 0px !important; }
+
+.mgb5 { margin-bottom: 5px !important; }
+
+.mgb10 { margin-bottom: 10px !important; }
+
+.mgb15 { margin-bottom: 15px !important; }
+
+.mgb20 { margin-bottom: 20px !important; }
+
+.mgb25 { margin-bottom: 25px !important; }
+
+.mgb30 { margin-bottom: 30px !important; }
+
+.mgb35 { margin-bottom: 35px !important; }
+
+.mgb70 { margin-bottom: 70px !important; }
+
+.mgb100 { margin-bottom: 100px !important; }
+
+.mgt0 { margin-top: 0px !important; }
+
+.mgt1 { margin-top: 1px !important; }
+
+.mgt3 { margin-top: 3px !important; }
+
+.mgt4 { margin-top: 4px !important; }
+
+.mgt5 { margin-top: 5px !important; }
+
+.mgt6 { margin-top: 6px !important; }
+
+.mgt7 { margin-top: 7px !important; }
+
+.mgt8 { margin-top: 8px !important; }
+
+.mgt10 { margin-top: 10px !important; }
+
+.mgt13 { margin-top: 13px !important; }
+
+.mgt15 { margin-top: 15px !important; }
+
+.mgt16 { margin-top: 16px !important; }
+
+.mgt20 { margin-top: 20px !important; }
+
+.mgt25 { margin-top: 25px !important; }
+
+.mgt30 { margin-top: 30px !important; }
+
+.mgt35 { margin-top: 35px !important; }
+
+.mgt40 { margin-top: 40px !important; }
+
+.mgt50 { margin-top: 50px !important; }
+
+.mgt60 { margin-top: 60px !important; }
+
+.mgt80 { margin-top: 80px !important; }
+
+.mgt90 { padding-top: 90px !important; }
+
+.mgt100 { margin-top: 100px !important; }
+
+.mgt118 { margin-top: 118px !important; }
+
+.mgt285 { margin-top: 285px !important; }
+
+.mgr5 { margin-right: 5px; }
+
+.mgr10 { margin-right: 10px; }
+
+.mgr15 { margin-right: 15px; }
+
+.mgr20 { margin-right: 20px; }
+
+.mgtb15 { margin: 15px 0 !important; }
+
+/* padding */
+.pd0 { padding: 0 !important; }
+
+.pd15 { padding: 15px 0 !important; }
+
+.pd20 { padding: 20px !important; }
+
+.pd30 { padding: 30px !important; }
+
+.pdt0 { padding-top: 0px !important; }
+
+.pdt2 { padding-top: 2px !important; }
+
+.pdt3 { padding-top: 3px !important; }
+
+.pdt5 { padding-top: 5px !important; }
+
+.pdt7 { padding-top: 7px !important; }
+
+.pdt8 { padding-top: 8px !important; }
+
+.pdt10 { padding-top: 10px !important; }
+
+.pdt15 { padding-top: 15px !important; }
+
+.pdt20 { padding-top: 20px !important; }
+
+.pdt30 { padding-top: 30px !important; }
+
+.pdt40 { padding-top: 40px !important; }
+
+.pdl0 { padding-left: 0 !important; }
+
+.pdl10 { padding-left: 10px !important; }
+
+.pdl15 { padding-left: 15px !important; }
+
+.pdl20 { padding-left: 20px !important; }
+
+.pdl25 { padding-left: 25px !important; }
+
+.pdr15 { padding-right: 15px !important; }
+
+.pdb0 { padding-bottom: 0px !important; }
+
+.pdb30 { padding-bottom: 30px !important; }
+
+/* point-color */
+.pc01 { color: #e4392e !important; }
+
+/* 빨강 */
+/*bg-color*/
+.bg01 { display: inline-block; background: #ecfec0; }
+
+/* print */
+@media print { #header { display: none; }
+    #lnb { display: none; }
+    #footer { display: none; } }

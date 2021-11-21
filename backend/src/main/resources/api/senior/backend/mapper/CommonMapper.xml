@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="api.senior.backend.mapper.CommonMapper">
+
+    <select id="selectMberInfo" resultType="Map">
+        SELECT /*CommonMapper.xml [api.senior.backend.mapper.CommonMapper
+                 .selectMberInfo] 회원 로그인*/
+               MBER_INNB
+             , ID
+             , MBER_NM
+          FROM MBER
+         WHERE ID = #{id}
+           AND PASSWORD =  #{password}
+    </select>
+
+</mapper>

@@ -1,4 +1,4 @@
-# frontend
+# webFrontend
 
 ## Project setup
 ```

@@ -21,6 +21,9 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'mysql:mysql-connector-java'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+    implementation 'org.springframework.boot:spring-boot-starter-mobile:1.5.19.RELEASE'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'

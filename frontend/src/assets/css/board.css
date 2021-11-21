@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+/*/////////////////////////////// form ///////////////////////////////*/
+.span-form-txt { margin: 0 5px 0px 0px; height: 30px; line-height: 30px; display: inline-block;  vertical-align: middle;} /* - ~ form 옆에 오는 텍스트*/
+
+input { /*그림자/라운딩 제거*/ -webkit-appearance: none; -moz-appearance: none; appearance: none; border-radius: 0px; }
+
+input.txt, select.select { border-radius: 3px; }
+
+input::-ms-clear { display: none; }
+
+input[type=text][disabled] { background: #f4f4f4; color: #999999; }
+
+input[type="text"], input[type="password"] { padding-left: 10px; height: 28px; line-height: 28px; border: 1px solid #e0e0e0; -webkit-box-sizing: border-box; box-sizing: border-box; letter-spacing: 0; /*그림자/라운딩 제거*/ font-size: 14px; }
+
+input[type="text"] input:-ms-input-placeholder { color: #999; }
+
+input[type="text"] input::-webkit-input-placeholder { color: #999; }
+
+input[type="text"] input::-moz-placeholder { color: #999; }
+
+input[type="text"] input::-moz-placeholder { color: #999; }
+
+textarea { padding-left: 5px; background: #fff; border: 1px solid #efefef; border-radius: 3px; letter-spacing: 0; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+select { height: 28px; padding-left: 10px; font-size: 14px; color: #494949; border: 1px solid #e0e0e0; -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-appearance: none; -moz-appearance: none; appearance: none; background: #fff url("../img/bg-selbox.png") no-repeat 100% 50%; }
+
+select::-ms-expand { display: none; }
+
+/* check, hover 스타일 설정 IE, Chrome */
+select option:checked, select option:hover { background: #e0e0e0; color: #333; }
+
+/* check, hover 스타일 설정 FireFox */
+select option:checked, select option:hover { -webkit-box-shadow: 0 0 10px 100px #e0e0e0 inset; box-shadow: 0 0 10px 100px #e0e0e0 inset; color: #333; }
+
+input[type="radio"] { display: none; }
+
+input[type="radio"] + label { margin-left: 10px; height: 20px; line-height: 20px; }
+
+input[type="radio"] + label .box { display: inline-block; width: 20px; height: 20px; vertical-align: middle; background: url("../img/img-radio-none.png") no-repeat; cursor: pointer; }
+
+input[type="radio"] + label .label-txt { display: inline-block; margin-left:10px; font-size: 14px; vertical-align: middle }
+
+input[type="radio"]:checked + label .box { background: url("../img/img-radio-checked.png") no-repeat; }
+
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label { margin-left: 10px; display: inline-block; margin-left: 10px; }
+
+input[type="checkbox"] + label .box { display: inline-block; width: 20px; height: 21px; vertical-align: middle; background: url("../img/img-checkbox-none.png") no-repeat; cursor: pointer; }
+
+input[type="checkbox"] + label .label-txt { display: inline-block; margin-left: 5px; font-size: 14px; vertical-align: middle; }
+
+input[type="checkbox"]:checked + label .box { background: url("../img/img-checkbox-checked.png") no-repeat; }
+
+.form-all { margin-left: -10px; }
+
+/*/////////////////////////////// table ///////////////////////////////*/
+table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed;  font-family: 'Noto Sans KR',sans-serif; }
+
+table .ellipsis { display: inline-block; width: 98%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+
+table a { line-height:20px; }
+
+*:first-child + html table { width: auto; table-layout: fixed; border-collapse: collapse; }
+
+.tb-col { border: 1px solid #e0e0e0; }
+
+.tb-col thead th, .tb-col tbody td { letter-spacing: -0.06em; text-align: center; font-size:14px; }
+
+.tb-col thead th { padding: 7px 10px; border-right: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; font-weight: 600; background: #f1f1f1; }
+
+.tb-col tbody td { padding: 7px 10px; border-right: 1px solid #e0e0e0; border-top: 1px solid #e0e0e0; }
+
+.tb-col tbody th { padding: px; border-right: 1px solid #e0e0e0; border-top: 1px solid #e0e0e0; font-weight: 600; background: #f1f1f1; }
+
+.tb-col tbody td.__left { padding-left: 10px; }
+
+.tb-col thead th.last, .tb-col tbody td.last { border-right: none; }
+
+.tb-row { border-top: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; }
+
+.tb-row th.th-view { padding:15px !important; font-size: 18px; }
+
+.tb-row th, .tb-row td { padding: 7px 10px !important; font-size:14px; }
+
+.tb-row th { border-bottom: 1px solid #e0e0e0; border-left: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; background: #f1f1f1; }
+
+.tb-row td { border-bottom: 1px solid #e0e0e0; }
+
+.tb-row + .tb-row { margin-top:20px; }
+
+/*table-line-none*/
+.tb-none th { padding: 5px 0 !important; font-size: 17px !important; color: #333 !important; text-align: left !important; border: none; background: none; }
+
+.tb-none td { padding: 5px 0 !important; height: 36px; border: none; }
+
+/* 테이블 하단 스타일 */
+.info-txt-bottom { overflow: hidden; margin-top: 10px; }
+
+/*pagenavi*/
+.pagenavi { margin-top: 30px; text-align: center; }
+
+.pagenavi:before, .pagenavi:after { content: ""; display: table; }
+
+.pagenavi .current { color: #fff; margin-left: 0px; background:#375588; border: 1px solid #375588; font-weight:600; z-index: 99; }
+
+.pagenavi .pagenavi-con { display: inline-block; }
+
+.pagenavi .last, .pagenavi .first, .pagenavi .previouspostslink, .pagenavi .nextpostslink { padding: 0; text-indent: -9999px; }
+
+.pagenavi a, .pagenavi span { float: left; position: relative; margin-left: -1px; display: inline-block; width: 33px; height: 38px; line-height: 38px; color: #888; font-size: 15px; border: 1px solid #e0e0e0; }
+
+.pagenavi .first { border-top-left-radius: 5px; border-bottom-left-radius: 5px; }
+
+.pagenavi .last { border-top-right-radius: 5px; border-bottom-right-radius: 5px; }
+
+.pagenavi .last:after, .pagenavi .first:after { content: ""; position: absolute; top: 50%; left: 50%; margin-top: -5px; margin-left: -6px; width: 14px; height: 12px; background: url("../img/nav-ico-page.png") 0 0 no-repeat; }
+
+.pagenavi .last:after { background-position: -16px 0; }
+
+.pagenavi .previouspostslink:after, .pagenavi .nextpostslink:after { content: ""; position: absolute; top: 50%; left: 50%; margin-top: -5px; margin-left: -4px; width: 7px; height: 12px; background: url("../img/nav-ico-page.png") 0 0 no-repeat; }
+
+.pagenavi .previouspostslink:after { background-position: 0px 0; }
+
+.pagenavi .nextpostslink:after { background-position: -16px 0; }
