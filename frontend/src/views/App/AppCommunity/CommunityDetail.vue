@@ -107,18 +107,7 @@ export default {
 
       return response.data;
     },
-    removeCommunity_click () {
-      this.$store.commit(
-          'popup/open',
-          {
-            name: 'ConfirmPopup',
-            params: {
-              msgHtml: '해당 게시물을 삭제 하시겠습니까?',
-              okFunc: this.removeCommunity
-            }
-          })
-    },
-    async removeCommunity () {
+    async removeCommunity_click () {
       this.$store.commit('loading/on');
 
       try {

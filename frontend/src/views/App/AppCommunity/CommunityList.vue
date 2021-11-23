@@ -95,7 +95,7 @@
             <td class="last">{{ info.registMberNm }}</td>
           </tr>
           <tr v-show="communityList.length == 0">
-            <td class="last" colspan="7">조회 된 커뮤니티 목록이 없습니다.</td>
+            <td class="last" colspan="3">조회 된 커뮤니티 목록이 없습니다.</td>
           </tr>
           </tbody>
         </table>

@@ -196,19 +196,7 @@ export default {
       const path = '/AppAdminSetting/Write/regist';
       this.$router.push({path: path}).catch(()=>{});
     },
-    removeMber_click (mberInnb) {
-      this.$store.commit(
-          'popup/open',
-          {
-            name: 'ConfirmPopup',
-            params: {
-              msgHtml: '관리자 멤버에서 탈퇴하시겠습니까?',
-              okFunc: this.removeMber,
-              okParams: mberInnb
-            }
-          })
-    },
-    async removeMber (mberInnb) {
+    async removeMber_click (mberInnb) {
       this.$store.commit('loading/on');
 
       try {

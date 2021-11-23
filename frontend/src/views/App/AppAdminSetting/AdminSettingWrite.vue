@@ -269,20 +269,7 @@ export default {
 
       return true;
     },
-    modifyMber_click () {
-      if(!this.modifyValid()) return false;
-
-      this.$store.commit(
-          'popup/open',
-          {
-            name: 'ConfirmPopup',
-            params: {
-              msgHtml: '멤버 정보를 수정 하시겠습니까?',
-              okFunc: this.modifyMber
-            }
-          })
-    },
-    async modifyMber () {
+    async modifyMber_click () {
       this.$store.commit('loading/on');
 
       try {
@@ -309,20 +296,8 @@ export default {
 
       return response.data;
     },
-    registMber_click () {
+    async registMber_click () {
       if(!this.registValid()) return false;
-
-      this.$store.commit(
-          'popup/open',
-          {
-            name: 'ConfirmPopup',
-            params: {
-              msgHtml: '회원을 등록 하시겠습니까?',
-              okFunc: this.registMber
-            }
-          })
-    },
-    async registMber () {
       this.$store.commit('loading/on');
 
       try {

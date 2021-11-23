@@ -158,22 +158,10 @@ export default {
 
       return response.data;
     },
-    modifyCommunity_click () {
+    async modifyCommunity_click () {
       this.communityInfo.mberInnb = this.mberInfo.mberInnb;
 
       if(this.valid()) return false;
-
-      this.$store.commit(
-          'popup/open',
-          {
-            name: 'ConfirmPopup',
-            params: {
-              msgHtml: '게시물을 수정 하시겠습니까?',
-              okFunc: this.modifyCommunity
-            }
-          })
-    },
-    async modifyCommunity () {
       this.$store.commit('loading/on');
 
       try {
@@ -200,22 +188,11 @@ export default {
 
       return response.data;
     },
-    registCommunity_click () {
+    async registCommunity_click () {
       this.communityInfo.mberInnb = this.mberInfo.mberInnb;
 
       if(this.valid()) return false;
 
-      this.$store.commit(
-          'popup/open',
-          {
-            name: 'ConfirmPopup',
-            params: {
-              msgHtml: '게시물을 등록 하시겠습니까?',
-              okFunc: this.registCommunity
-            }
-          })
-    },
-    async registCommunity () {
       this.$store.commit('loading/on');
 
       try {
