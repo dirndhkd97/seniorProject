@@ -3,7 +3,7 @@
     <h1>
       <img alt="light" src="../../assets/img/trfLight.png" style="width: 100%"/>
     </h1>
-    <ul style="padding-top: 180px">
+    <ul>
       <li v-for="(info) in level1MenuList"
           :key="info.code + 'menu'"
           :class="getLevel1MenuClass(info)">
